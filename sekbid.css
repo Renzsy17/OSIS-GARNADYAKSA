@@ -1,0 +1,166 @@
+/* sekbid.css */
+
+:root { 
+    --deep-black: #121212; 
+    --clean-white: #FFFFFF; 
+    --slate-gray: #F5F5F5; 
+}
+
+body { 
+    font-family: 'Open Sans', sans-serif; 
+    margin: 0; 
+    color: var(--deep-black); 
+    padding-bottom: 60px; 
+    
+    /* Warna dasar putih bersih */
+    background-color: #ffffff;
+
+    /* --- GABUNGAN 4 LAPIS --- */
+    background-image: 
+        /* Layer 1 */
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 25v10m-5-5h10' stroke='%23d32f2f' stroke-width='2' stroke-opacity='0.15' stroke-linecap='round' /%3E%3C/svg%3E"),
+        
+        /* Layer 2: */
+        radial-gradient(#b0b0b0 1.5px, transparent 1.5px),
+        
+        /* Layer 3:*/
+        radial-gradient(circle at 0% 0%, rgba(211, 47, 47, 0.15) 0%, transparent 45%),
+        
+        /* Layer 4:*/
+        radial-gradient(circle at 100% 100%, rgba(211, 47, 47, 0.15) 0%, transparent 50%);
+    
+    /* Mengatur ukuran masing-masing layer */
+    background-size: 
+        60px 60px, 
+        20px 20px, 
+        100% 100%, 
+        100% 100%; 
+        
+    /* Mengatur perulangan */
+    background-repeat: 
+        repeat, 
+        repeat, 
+        no-repeat, 
+        no-repeat;
+        
+    /* Biar background-nya nempel diam saat layar di-scroll */
+    background-attachment: fixed;
+}
+
+/* Tombol Kembali */
+.back-btn { 
+    display: inline-block; 
+    margin: 20px; 
+    text-decoration: none; 
+    color: var(--deep-black); 
+    font-weight: bold; 
+    font-size: 1.1rem; 
+}
+
+/* Judul Paling Atas */
+.header-title { 
+    text-align: center; 
+    margin-top: 10px; 
+}
+.header-title h4 { 
+    margin: 0; 
+    font-size: 1.9rem; 
+    font-weight: 700; 
+    letter-spacing: 2px; 
+    color: #111; 
+}
+.header-title h1 { 
+    margin: 0; 
+    font-size: 3rem; 
+    font-family: 'Montserrat', sans-serif; 
+    text-transform: uppercase; 
+    letter-spacing: -1px; 
+}
+
+/* Wadah Foto Anggota */
+.members { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 40px; 
+    margin-top: 50px; 
+}
+.card { 
+    text-align: center; 
+}
+
+/* Kotak Foto  */
+.photo-box {
+    width: 220px;
+    height: 220px;
+    background-color: var(--slate-gray); 
+    border-radius: 20px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.20);
+    object-fit: cover; 
+    border: 1px solid #f0f0f0;
+    margin-bottom: 15px;
+    display: block; 
+}
+.name-text { 
+    font-weight: 700; 
+    font-size: 1.2rem; 
+    color: #666; 
+    text-transform: uppercase; 
+}
+
+/* Wadah utama untuk menengahkan kedua kotak */
+.info-container {
+    max-width: 600px; 
+    margin: 60px auto 40px; 
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px; 
+}
+
+/* Desain Kartu Kaca yang akan dipakai di kedua kotak */
+.glass-card { 
+    padding: 35px 30px; 
+    text-align: center; 
+    
+    /* Efek Kaca */
+    background-color: rgba(255, 255, 255, 0.85); 
+    backdrop-filter: blur(8px); 
+    -webkit-backdrop-filter: blur(8px); 
+    
+    /* Bingkai dan Bayangan */
+    border: 1px solid rgba(211, 47, 47, 0.2); 
+    border-radius: 25px; 
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08); 
+}
+
+/* Merapikan teks di dalam kartu */
+.glass-card h3 { 
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 1.6rem; 
+    color: #333; 
+    margin-top: 0;
+    margin-bottom: 15px; 
+    font-weight: 700; 
+}
+
+.glass-card p { 
+    font-size: 1.1rem; 
+    line-height: 1.6; 
+    color: #555; 
+    margin: 0; 
+    font-weight: 600;
+}
+/* List Program Kerja */
+.proker-list { 
+    text-align: left; 
+    max-width: 3000px; 
+    margin: 0 auto; 
+    padding-left: 20px; 
+}
+.proker-list li { 
+    font-size: 1.1rem; 
+    color: #666; 
+    margin-bottom: 18px; 
+    font-weight: 600; 
+}

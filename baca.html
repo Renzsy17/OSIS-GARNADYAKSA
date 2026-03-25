@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baca Event | Garnadyaksa</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="homepage.css">
+    <link rel="stylesheet" href="event.css">
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">
+            <img src="https://raw.githubusercontent.com/Renzsy17/Hwhehehe/refs/heads/main/22493053-5ec3-48b7-905f-f6b8067cf35c_removalai_preview.png" alt="Logo Garnadyaksa">
+            <div class="logo-text">GARNA<span>DYAKSA</span></div>
+        </a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="index.html#current-events">Events</a>
+            <a href="index.html#archive">Archive</a>
+        </nav>
+    </header>
+
+    <main class="event-page-bg" id="wadah-baca">
+        <h2 style="text-align: center; padding: 100px 20px;">Memuat detail event...</h2>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <h2>GARNADYAKSA</h2>
+            <p>Empowering students, fostering community, and leading by example.</p>
+             <div class="social-links">
+                <a href="https://www.instagram.com/osis.garnadyaksa" target="_blank">Instagram</a>
+                <a href="https://www.tiktok.com/@osissman1bawang" target="_blank">Tik Tok</a>
+                <a href="https://whatsapp.com/channel/0029Vb3XNrkBqbr2sA5l6531" target="_blank">CH WhatsApp</a>
+            </div> 
+        </div>
+        <div class="copyright">
+            &copy; 2026 Garnadyaksa Student Council. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const idArtikel = urlParams.get('id');
+        const wadah = document.getElementById('wadah-baca');
+
+        if (!idArtikel) {
+            wadah.innerHTML = '<h2 style="text-align: center; padding: 100px 20px; color: red;">Artikel tidak ditemukan.</h2>';
+        } else {
+            fetch('artikel.json')
+                .then(response => response.json())
+                .then(data => {
+                    const artikel = data.find(item => item.id == idArtikel);
+
+                    if (artikel) {
+                        // Ubah Judul Tab Browser otomatis
+                        document.title = artikel.judul + " | Garnadyaksa";
+
+                        // Cetak HTML pakai desain ASLI kamu
+                        wadah.innerHTML = `
+                            <article class="article-wrapper">
+                                <img src="${artikel.gambar}" alt="${artikel.judul}" class="article-hero-img">
+                                
+                                <div class="article-content">
+                                    <span class="article-category">Event Update</span>
+                                    <h1 class="article-title">${artikel.judul}</h1>
+                                    
+                                    <div class="article-meta-grid">
+                                        <div class="meta-box">
+                                            <h5>Tanggal & Waktu</h5>
+                                            <p>${artikel.tanggal}</p>
+                                        </div>
+                                        <div class="meta-box">
+                                            <h5>Lokasi</h5>
+                                            <p>Lingkungan Sekolah</p> </div>
+                                        <div class="meta-box">
+                                            <h5>Penyelenggara</h5>
+                                            <p>OSIS Garnadyaksa</p> </div>
+                                    </div>
+
+                                    <div class="article-body" style="white-space: pre-wrap;">
+                                        <p>${artikel.deskripsi}</p>
+                                    </div>
+
+<div class="article-cta">
+                                        <h3 style="margin-bottom: 1rem;">Link Dokumentasi</h3>
+                                        <p style="margin-bottom: 1.5rem; color: #555;">Klik tombol di bawah ini untuk melihat foto-foto keseruan event ini!</p>
+                                        
+                                        <a href="${artikel.link_dokumen}" target="_blank" class="btn-register">Lihat Dokumentasi &rarr;</a>
+                                    </div>
+
+                                </div>
+                            </article>
+                        `;
+                    } else {
+                        wadah.innerHTML = '<h2 style="text-align: center; padding: 100px 20px; color: red;">Artikel sudah dihapus atau tidak tersedia.</h2>';
+                    }
+                })
+                .catch(error => {
+                    wadah.innerHTML = '<h2 style="text-align: center; padding: 100px 20px; color: red;">Gagal terhubung ke database.</h2>';
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+</body>
+</html>
